@@ -1,12 +1,17 @@
 class BooksController < ApplicationController
-  def new
-    @book = Book.new
-  end
 
   def create
+    p list = List.new(list_params)
+    if list.save
+      redirect_to books_path
+    else
+      render :new
+    end
   end
 
   def index
+    @list = List.new
+    @lists = List.all
   end
 
   def edit
@@ -20,8 +25,8 @@ class BooksController < ApplicationController
 
   private
 
-  def book_params
-    params.require(:book).permit(:name,:textboby)
+  def list_params
+    params.require(:list).permit(:title, :body)
   end
 
 end
