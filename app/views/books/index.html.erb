@@ -1,25 +1,48 @@
 <h2>新規投稿</h2>
 <div class="form-main">
+  <p>Listモデル</p>
   <%= form_with model:@list, url: books_path, local:true do |f| %>
-    <h4>title</h4>
-    <%= f.text_field :title %>
-    <h4>body</h4>
-    <%= f.text_field :body %>
-    <%= f.submit '投稿' %>
+    <table>
+      <tr>
+        <th><%= f.label :image %></th>
+        <td><%= f.attachment_field :image %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :title %></th>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :body %></th>
+        <td><%= f.text_area :body %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit '投稿' %></td>
+      </tr>
+    </table>
   <% end %>
 </div>
+
 <div>
   <%= link_to '戻る', root_path %>
 </div>
 
-<h2>book一覧画面</h2>
-<div>
+<h3>List 一覧画面</h3>
+<table>
   <% @lists.each do |list| %>
-    <p>タイトル</p>
-    <%= link_to book_path(list) do %>
-      <%= list.title %>
-    <% end %>
-    <p>ボディー</p>
-    <%= list.body %>
+    <tr>
+      <th>List image</th>
+      <td><%= attachment_image_tag list, :image, size: '100x100' %></td>
+    </tr>
+    <tr>
+      <th>List title</th>
+      <td>
+        <%= link_to list.title, book_path(list.id) %>
+      </td>
+    </tr>
+    <tr>
+      <th>List body</th>
+      <td><%= list.body %></td>
+      <td><%= link_to '削除', book_path(list.id), method: :delete %></td>
+    </tr>
   <% end %>
-</div>
+</table>

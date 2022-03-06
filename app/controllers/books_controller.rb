@@ -1,31 +1,35 @@
 class BooksController < ApplicationController
 
   def create
-    p list = List.new(list_params)
+    list = List.new(list_params)
     if list.save
       redirect_to books_path
     else
-      render :new
+      render :index
     end
   end
 
   def index
-    p "内容確認ここから"
-    p @list = List.new
-    p "ここまで********"
+    @list = List.new
     @lists = List.all
+
+    @book = Book.new
+    @books = Book.all
   end
 
   def show
     p "内容確認ここから"
     p @list = List.find(params[:id])
     p "ここまで********"
+
+    #@list = List.find(params[:id])
   end
 
   def edit
     p "内容確認ここから"
     p @list = List.find(params[:id])
     p "ここまで********"
+    @list = List.find(params[:id])
   end
 
   def update
@@ -39,12 +43,19 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    @list = List.find(params[:id])
+    @list.delete
+    redirect_to books_path
   end
 
   private
 
   def list_params
-    params.require(:list).permit(:title, :body)
+    params.require(:list).permit(:title, :body, :image)
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :body)
   end
 
 end

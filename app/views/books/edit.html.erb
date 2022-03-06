@@ -3,6 +3,10 @@
 <%= form_with model:@list, url: book_path, local:true do |f| %>
   <table>
     <tr>
+      <th><%= f.label :image %></th>
+      <td><%= f.attachment_field :image %></td>
+    </tr>
+    <tr>
       <th><%= f.label :title %></th>
       <td><%= f.text_field :title %></td>
     </tr>
@@ -16,3 +20,5 @@
     </tr>
   </table>
 <% end %>
+
+<%= link_to "HOMEへ戻る", root_path %>
