@@ -10,14 +10,32 @@ class BooksController < ApplicationController
   end
 
   def index
-    @list = List.new
+    p "内容確認ここから"
+    p @list = List.new
+    p "ここまで********"
     @lists = List.all
   end
 
+  def show
+    p "内容確認ここから"
+    p @list = List.find(params[:id])
+    p "ここまで********"
+  end
+
   def edit
+    p "内容確認ここから"
+    p @list = List.find(params[:id])
+    p "ここまで********"
   end
 
   def update
+    @list = List.find(params[:id])
+    p "内容確認ここから"
+    p list_params
+    p "****************"
+    p @list.update(list_params)
+    p "ここまで********"
+    redirect_to book_path(@list.id)
   end
 
   def destroy

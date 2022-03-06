@@ -1,0 +1,26 @@
+<h2>投稿詳細画面</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>投稿ID</th>
+      <th>投稿タイトル</th>
+      <th>投稿説明</th>
+      <th>投稿作成</th>
+      <th>投稿更新</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @list.id %></td>
+      <td><%= @list.title %></td>
+      <td><%= @list.body %></td>
+      <td><%= @list.created_at %></td>
+      <td><%= @list.updated_at %></td>
+      <td><%= link_to '編集', edit_book_path(@list.id) %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+

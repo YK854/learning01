@@ -8,12 +8,17 @@
     <%= f.submit '投稿' %>
   <% end %>
 </div>
+<div>
+  <%= link_to '戻る', root_path %>
+</div>
 
 <h2>book一覧画面</h2>
 <div>
   <% @lists.each do |list| %>
     <p>タイトル</p>
-    <%= list.title %>
+    <%= link_to book_path(list) do %>
+      <%= list.title %>
+    <% end %>
     <p>ボディー</p>
     <%= list.body %>
   <% end %>
