@@ -1,0 +1,35 @@
+<h3>新規投稿</h3>
+<div>
+  <%= form_with model:@book2, url:books2_index_path, local:true do |f| %>
+    <table>
+      <tr>
+        <th><%= f.label :image %></th>
+        <td><%= f.attachment_field :image %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :title %></th>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :body %></th>
+        <td><%= f.text_area :body %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit '投稿' %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+
+<h3>book2一覧</h3>
+<div>
+  <table>
+    <% @books2.each do |book2| %>
+      <tr>
+        <td><%= attachment_image_tag book2, :image ,:fill ,100 ,100 %></td>
+        <th><%= book2.title %></th>
+        <td><%= book2.body %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
