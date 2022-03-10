@@ -27,8 +27,8 @@
     <% @books2.each do |book2| %>
       <tr>
         <td><%= attachment_image_tag book2, :image ,:fill ,100 ,100 %></td>
-        <th><%= book2.title %></th>
-        <td><%= book2.body %></td>
+        <th><%= link_to book2.title, edit_books2_path(book2) %></th>
+        <td><%= link_to book2.body, edit_books2_path(book2) %></td>
       </tr>
     <% end %>
   </table>

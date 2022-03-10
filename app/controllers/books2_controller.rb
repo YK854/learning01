@@ -11,6 +11,10 @@ class Books2Controller < ApplicationController
     redirect_to books2_index_path
   end
 
+  def edit
+    @book2 = Book2.find(params[:id])
+  end
+
   private
 
   def book2_params
