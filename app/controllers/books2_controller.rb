@@ -15,6 +15,12 @@ class Books2Controller < ApplicationController
     @book2 = Book2.find(params[:id])
   end
 
+  def update
+    @book2 = Book2.find(params[:id])
+    @book2.update(book2_parms)
+    redirect_to books2_index_path
+  end
+
   private
 
   def book2_params
