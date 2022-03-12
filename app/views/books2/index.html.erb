@@ -29,6 +29,7 @@
         <td><%= attachment_image_tag book2, :image ,:fill ,100 ,100 %></td>
         <th><%= link_to book2.title, edit_books2_path(book2) %></th>
         <td><%= link_to book2.body, edit_books2_path(book2) %></td>
+        <td><%= link_to '削除', books2_path(book2.id), method: :delete %></td>
       </tr>
     <% end %>
   </table>
